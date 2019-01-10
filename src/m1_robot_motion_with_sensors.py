@@ -127,7 +127,7 @@ def run_test_go_straight_until_black():
     #   go_straight_until_black   method of the SimpleRoseBot class,
     #   then use this function to test that method.
     # -------------------------------------------------------------------------
-
+    SimpleRoseBot().go_straight_until_black(75)
 
 ###############################################################################
 # Put your   SimpleRoseBot    class here (below this comment).
@@ -166,6 +166,13 @@ class SimpleRoseBot(object):
         while True:
             current = Motor('B').get_position()
             if (current - start) * inches * math.pi / 360 >= inches:
+                break
+        SimpleRoseBot().stop()
+
+    def go_straight_until_black(self,speed):
+        SimpleRoseBot().go(speed, speed)
+        while True:
+            if SimpleRoseBot().color_sensor.get_reflected_light_intensity() >= 50:
                 break
         SimpleRoseBot().stop()
 
