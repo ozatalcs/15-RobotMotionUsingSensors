@@ -123,7 +123,7 @@ def run_test_go_straight_until_black():
     print('Testing the   go_straight_until_black   method of SimpleRoseBot:')
     print('--------------------------------------------------')
     # -------------------------------------------------------------------------
-    # TODO: 7. Implement this function, then implement the
+    # Done: 7. Implement this function, then implement the
     #   go_straight_until_black   method of the SimpleRoseBot class,
     #   then use this function to test that method.
     # -------------------------------------------------------------------------
@@ -172,7 +172,7 @@ class SimpleRoseBot(object):
     def go_straight_until_black(self,speed):
         SimpleRoseBot().go(speed, speed)
         while True:
-            if SimpleRoseBot().color_sensor.get_reflected_light_intensity() <= 50:
+            if SimpleRoseBot().color_sensor.get_reflected_light_intensity() <= 25:
                 break
         SimpleRoseBot().stop()
 
