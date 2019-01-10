@@ -14,10 +14,10 @@ import math
 
 def main():
     """ Calls the other functions to test/demo them. """
-    run_test_wait_for_seconds()
-    run_test_init()
-    run_test_go_and_stop()
-    run_test_go_straight_for_seconds()
+    #run_test_wait_for_seconds()
+    #run_test_init()
+    #run_test_go_and_stop()
+    #run_test_go_straight_for_seconds()
     run_test_go_straight_for_inches()
     run_test_go_straight_until_black()
 
@@ -66,7 +66,7 @@ def run_test_init():
     print('Testing the   __init__   method of the SimpleRoseBot class:')
     print('--------------------------------------------------')
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement this function, then implement the   __init__   method
+    # Done: 3. Implement this function, then implement the   __init__   method
     #   of the SimpleRoseBot class, then use this function to test __init__.
     # -------------------------------------------------------------------------
     SimpleRoseBot()
@@ -97,11 +97,11 @@ def run_test_go_straight_for_seconds():
     print('Testing the   go_straight_for_seconds   method of SimpleRoseBot:')
     print('--------------------------------------------------')
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement this function, then implement the
+    # Done: 5. Implement this function, then implement the
     #   go_straight_for_seconds   method of the SimpleRoseBot class,
     #   then use this function to test that method.
     # -------------------------------------------------------------------------
-
+    SimpleRoseBot().go_straight_for_seconds(5, 50)
 
 def run_test_go_straight_for_inches():
     """ Tests the   go_straight_for_inches   method of SimpleRoseBot. """
@@ -110,11 +110,11 @@ def run_test_go_straight_for_inches():
     print('Testing the   go_straight_for_inches   method of SimpleRoseBot:')
     print('--------------------------------------------------')
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement this function, then implement the
+    # Done: 6. Implement this function, then implement the
     #   go_straight_for_inches   method of the SimpleRoseBot class,
     #   then use this function to test that method.
     # -------------------------------------------------------------------------
-
+    SimpleRoseBot().go_straight_for_inches(20, 30)
 
 def run_test_go_straight_until_black():
     """ Tests the   go_straight_until_black   method of SimpleRoseBot. """
@@ -148,7 +148,7 @@ class SimpleRoseBot(object):
     def stop(self):
         Motor('B').turn_off()
         Motor('C').turn_off()
-    
+
     def go_straight_for_seconds(self, seconds, speed):
         Motor('B').turn_on(speed)
         Motor('C').turn_on(speed)
@@ -158,6 +158,16 @@ class SimpleRoseBot(object):
             if (current - start) >= seconds:
                 break
         self.stop()
+
+    def go_straight_for_inches(self, inches, speed):
+        start = Motor('B').get_position()
+        Motor('B').turn_on(speed)
+        Motor('C').turn_on(speed)
+        while True:
+            current = Motor('B').get_position()
+            if (current - start) * inches * math.pi / 360 >= inches:
+                break
+        SimpleRoseBot().stop()
 
 ###############################################################################
 # The  Motor   and   ColorSensor classes.  USE them, but do NOT modify them.
