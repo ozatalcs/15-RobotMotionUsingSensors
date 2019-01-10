@@ -172,7 +172,7 @@ class SimpleRoseBot(object):
     def go_straight_until_black(self,speed):
         SimpleRoseBot().go(speed, speed)
         while True:
-            if SimpleRoseBot().color_sensor.get_reflected_light_intensity() >= 50:
+            if SimpleRoseBot().color_sensor.get_reflected_light_intensity() <= 50:
                 break
         SimpleRoseBot().stop()
 
