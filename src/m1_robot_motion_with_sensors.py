@@ -14,10 +14,10 @@ import math
 
 def main():
     """ Calls the other functions to test/demo them. """
-    #run_test_wait_for_seconds()
-    #run_test_init()
-    #run_test_go_and_stop()
-    #run_test_go_straight_for_seconds()
+    run_test_wait_for_seconds()
+    run_test_init()
+    run_test_go_and_stop()
+    run_test_go_straight_for_seconds()
     run_test_go_straight_for_inches()
     run_test_go_straight_until_black()
 
